@@ -1,0 +1,24 @@
+{
+  "name": "random-ext",
+  "version": "1.0.0",
+  "description": "Module to generate random boolean, number, string, arrays, objects etc",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bkumar2/random-ext.git"
+  },
+  "keywords": [
+    "random",
+    "extension",
+    "extras"
+  ],
+  "author": "Bipul Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkumar2/random-ext/issues"
+  },
+  "homepage": "https://github.com/bkumar2/random-ext"
+}
