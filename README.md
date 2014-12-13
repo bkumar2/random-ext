@@ -20,8 +20,8 @@ var randomExt = require('random-ext');
 * [`booleanArray(length)`] (#booleanArray)
 * [`integer(max, min)`] (#integer)
 * [`integerArray(length, max, min)`] (#integerArray)
-* [`float(max, min)`] (#float)
-* [`floatArray(length, max, min)`] (#floatArray)
+* [`float(limit, min)`] (#float)
+* [`floatArray(length, limit, min)`] (#floatArray)
 * [`string(maxLength, minLength)`] (#string)
 * [`stringArray(arrayLength, maxLength, minLength)`] (#stringArray)
 * [`restrictedString(charTypeArray, maxLength, minLength)`] (#restrictedString)
@@ -37,69 +37,112 @@ var randomBoolean = randomExt.boolean();
 ### <a name="booleanArray"/> booleanArray(length)
 
 Generates random boolean array.
-##### Parameter(s)
+##### Parameter
 * length - Required. Number of elements in the array.
 ```
-var randomBooleanArray = randomExt.booleanArray(length);
+var randomBooleanArray = randomExt.booleanArray(10);
 ```
 ### <a name="integer"/> integer(max, min)
 
 Generates random integer.
+##### Parameters
+* max - Required. Maximum integer value.
+* min - Optional. Minimum integer value. Defaults to 0 if unspecified.
 ```
-var randomInteger = randomExt.integer(max, min);
+var randomInteger = randomExt.integer(99, 10);
 ```
 ### <a name="integerArray"/> integerArray(length, max, min)
 
 Generates random integerArray.
+##### Parameters
+* length - Required. Number of elements in the array.
+* max - Required. Maximum integer value.
+* min - Optional. Minimum integer value. Defaults to 0 if unspecified.
 ```
 var randomIntegerArray = randomExt.integerArray(length, max, min);
 ```
-### <a name="float"/> float(max, min)
+### <a name="float"/> float(limit, min)
 
-Generates random float.
+Generates random floating point number.
+##### Parameters
+* limit - Required. Floating point number's upper limit. Generated number is always below this value.
+* min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
 ```
-var randomFloat = randomExt.float(max, min);
+var randomFloat = randomExt.float(10.523, 3.021);
 ```
 ### <a name="floatArray"/> floatArray(length, max, min)
 
-Generates random floatArray.
+Generates random floating point numbers' array.
+##### Parameters
+* length - Required. Number of elements in the array.
+* limit - Required. Floating point number's upper limit. Generated number is always below this value.
+* min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
 ```
-var randomFloatArray = randomExt.floatArray(length, max, min);
+var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
 ```
 ### <a name="string"/> string(maxLength, minLength)
 
-Generates random string.
+Generates random string containing random Unicode character in the code range 32-127, i.e. alphabets, numbers, space and special characters.
+##### Parameters
+* maxLength - Required. Maximum length of generated string.
+* minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 ```
-var randomString = randomExt.string(maxLength, minLength);
+var randomString = randomExt.string(10, 5);
 ```
 ### <a name="stringArray"/> stringArray(arrayLength, maxLength, minLength)
 
-Generates random stringArray.
+Generates random string array.
+##### Parameters
+* length - Required. Number of elements in the array.
+* maxLength - Required. Maximum length of generated string.
+* minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 ```
-var randomStringArray = randomExt.stringArray(arrayLength, maxLength, minLength);
+var randomStringArray = randomExt.stringArray(10, 4, 2);
 ```
 ### <a name="restrictedString"/> restrictedString(charTypeArray, maxLength, minLength)
 
 Generates random restrictedString.
+##### Parameters
+* charTypeArray - Required. Array of character types.
+* maxLength - Required. Maximum length of generated string.
+* minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 ```
-var randomRestrictedString = randomExt.restrictedString(charTypeArray, maxLength, minLength);
+// Generates string containing lower case and special characters.
+var randomRestrictedString = randomExt.restrictedString([randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
 ### <a name="restrictedStringArray"/> restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)
 
-Generates random restrictedStringArray.
+Generates random restricted string array.
+##### Parameters
+* length - Required. Number of elements in the array.
+* charTypeArray - Required. Array of character types.
+* maxLength - Required. Maximum length of generated string.
+* minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 ```
-var randomRestrictedStringArray = randomExt.restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength);
+// Generates 10 element array of strings containing lower case and special characters.
+var randomRestrictedStringArray = randomExt.restrictedStringArray(10, [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
 ### <a name="object"/> object(template)
 
 Generates random object.
+##### Parameter
+* template - Required. Template object to randomize.
 ```
-var randomObject = randomExt.object(template);
+var randomObject = randomExt.object({
+    name: [randomExt.DATA_TYPE.STRING, 10, 5],
+    age: [randomExt.DATA_TYPE.INTEGER, 100],
+});
 ```
 ### <a name="objectArray"/> objectArray(length, template)
 
 Generates random objectArray.
+##### Parameters
+* length - Required. Number of elements in the array.
+* template - Required. Template object to randomize.
 ```
-var randomObjectArray = randomExt.objectArray(length, template);
+var randomObjectArray = randomExt.objectArray(10,{
+    name: [randomExt.DATA_TYPE.STRING, 10, 5],
+    age: [randomExt.DATA_TYPE.INTEGER, 100],
+});
 ```
 
