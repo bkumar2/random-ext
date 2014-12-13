@@ -16,22 +16,33 @@ var randomExt = require('random-ext');
 
 ## Documentation
 
-* `boolean()`
-* `booleanArray(length)`
-* `integer(max, min)`
-* `integerArray(length, max, min)`
-* `float(max, min)`
-* `floatArray(length, max, min)`
-* `string(maxLength, minLength)`
-* `stringArray(arrayLength, maxLength, minLength)`
-* `restrictedString(charTypeArray, maxLength, minLength)`
-* `restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)`
-* `object(template)`
-* `objectArray(length, template)`
+* `[boolean()](#boolean)`
+* `[booleanArray(length)] (#booleanArray)`
+* `[integer(max, min)] (#integer)`
+* `[integerArray(length, max, min)] (#integerArray)`
+* `[float(max, min)] (#float)`
+* `[floatArray(length, max, min)] (#floatArray)`
+* `[string(maxLength, minLength)] (#string)`
+* `[stringArray(arrayLength, maxLength, minLength)] (#stringArray)`
+* `[restrictedString(charTypeArray, maxLength, minLength)] (#restrictedString)`
+* `[restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)] (#restrictedStringArray)`
+* `[object(template)] (#object)`
+* `[objectArray(length, template)] (#objectArray)`
 
 ## <a name="boolean"/> boolean()
 Generates random boolean.
 ```
 var randomBoolean = randomExt.boolean();
 ```
+## <a name="booleanArray"/> booleanArray(length)
+## <a name="integer"/> integer(max, min)
+## <a name="integerArray"/> integerArray(length, max, min)
+## <a name="float"/> float(max, min)
+## <a name="floatArray"/> floatArray(length, max, min)
+## <a name="string"/> string(maxLength, minLength)
+## <a name="stringArray"/> stringArray(arrayLength, maxLength, minLength)
+## <a name="restrictedString"/> restrictedString(charTypeArray, maxLength, minLength)
+## <a name="restrictedStringArray"/> restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)
+## <a name="object"/> object(template)
+## <a name="objectArray"/> objectArray(length, template)
 
