@@ -37,9 +37,8 @@ var randomBoolean = randomExt.boolean();
 ### <a name="booleanArray"/> booleanArray(length)
 
 Generates random boolean array.
-| Parameter | Required | Description |
-| --------- | -------- | ----------- |
-| length | Yes | Number of elements in the array. |
+##### Parameter(s)
+* length - Required. Number of elements in the array.
 ```
 var randomBooleanArray = randomExt.booleanArray(length);
 ```
