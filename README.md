@@ -31,9 +31,11 @@ var randomExt = require('random-ext');
 
 ### <a name="boolean"/> boolean()
 Generates random boolean.
+
 ```
 var randomBoolean = randomExt.boolean();
 ```
+
 ### <a name="booleanArray"/> booleanArray(length)
 
 Generates random boolean array.
@@ -42,15 +44,18 @@ Generates random boolean array.
 ```
 var randomBooleanArray = randomExt.booleanArray(10);
 ```
+
 ### <a name="integer"/> integer(max, min)
 
 Generates random integer.
 ##### Parameters
 * max - Required. Maximum integer value.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
+
 ```
 var randomInteger = randomExt.integer(99, 10);
 ```
+
 ### <a name="integerArray"/> integerArray(length, max, min)
 
 Generates random integerArray.
@@ -58,18 +63,22 @@ Generates random integerArray.
 * length - Required. Number of elements in the array.
 * max - Required. Maximum integer value.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
+
 ```
 var randomIntegerArray = randomExt.integerArray(length, max, min);
 ```
+
 ### <a name="float"/> float(limit, min)
 
 Generates random floating point number.
 ##### Parameters
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
+
 ```
 var randomFloat = randomExt.float(10.523, 3.021);
 ```
+
 ### <a name="floatArray"/> floatArray(length, max, min)
 
 Generates random floating point numbers' array.
@@ -77,18 +86,22 @@ Generates random floating point numbers' array.
 * length - Required. Number of elements in the array.
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
+
 ```
 var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
 ```
+
 ### <a name="string"/> string(maxLength, minLength)
 
 Generates random string containing random Unicode character in the code range 32-127, i.e. alphabets, numbers, space and special characters.
 ##### Parameters
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
+
 ```
 var randomString = randomExt.string(10, 5);
 ```
+
 ### <a name="stringArray"/> stringArray(arrayLength, maxLength, minLength)
 
 Generates random string array.
@@ -96,9 +109,11 @@ Generates random string array.
 * length - Required. Number of elements in the array.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
+
 ```
 var randomStringArray = randomExt.stringArray(10, 4, 2);
 ```
+
 ### <a name="restrictedString"/> restrictedString(charTypeArray, maxLength, minLength)
 
 Generates random restrictedString.
@@ -106,10 +121,12 @@ Generates random restrictedString.
 * charTypeArray - Required. Array of character types.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
+
 ```
 // Generates string containing lower case and special characters.
 var randomRestrictedString = randomExt.restrictedString([randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
+
 ### <a name="restrictedStringArray"/> restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)
 
 Generates random restricted string array.
@@ -118,27 +135,32 @@ Generates random restricted string array.
 * charTypeArray - Required. Array of character types.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
+
 ```
 // Generates 10 element array of strings containing lower case and special characters.
 var randomRestrictedStringArray = randomExt.restrictedStringArray(10, [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
+
 ### <a name="object"/> object(template)
 
 Generates random object.
 ##### Parameter
 * template - Required. Template object to randomize.
+
 ```
 var randomObject = randomExt.object({
     name: [randomExt.DATA_TYPE.STRING, 10, 5],
     age: [randomExt.DATA_TYPE.INTEGER, 100],
 });
 ```
+
 ### <a name="objectArray"/> objectArray(length, template)
 
 Generates random objectArray.
 ##### Parameters
 * length - Required. Number of elements in the array.
 * template - Required. Template object to randomize.
+
 ```
 var randomObjectArray = randomExt.objectArray(10,{
     name: [randomExt.DATA_TYPE.STRING, 10, 5],

@@ -188,57 +188,77 @@ function generateRestrictedStringArray(content, arrayLength, stringMaxLength, st
     return _generateArray(arrayLength, generateRestrictedString, [content, stringMaxLength, stringMinLength]);
 }
 
+function _generateFromDescriptor(randomDescriptor) {
+    var randomValue = null;
+    var dataType = randomDescriptor[0];
+    var propertyValueArgs = randomDescriptor.slice(1, randomDescriptor.length);
+    switch (dataType) {
+        case randomExt.DATA_TYPE.BOOLEAN:
+            randomValue = generateBoolean();
+            break;
+        case randomExt.DATA_TYPE.BOOLEAN_ARRAY:
+            randomValue = generateBooleanArray.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.INTEGER:
+            randomValue = generateNumber.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.INTEGER_ARRAY:
+            randomValue = generateNumberArray.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.FLOAT:
+            randomValue = generateFloat.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.FLOAT_ARRAY:
+            randomValue = generateFloatArray.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.RESTRICTED_STRING:
+            randomValue = generateRestrictedString.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.RESTRICTED_STRING_ARRAY:
+            randomValue = generateRestrictedStringArray.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.STRING:
+            randomValue = generateString.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.STRING_ARRAY:
+            randomValue = generateStringArray.apply(this, propertyValueArgs);
+            break;
+        default :
+            throw "Data Type " + dataType + " not supported.";
+    }
+    return randomValue;
+}
+
 function generateObject(template) {
-    if(randomExt.DEBUG) {
-        console.log("generateObject template:",template);
+    if (randomExt.DEBUG) {
+        console.log("generateObject template:", template);
     }
     var newObject = {};
     var properties = Object.getOwnPropertyNames(template);
     for (var i = 0; i < properties.length; ++i) {
         var property = properties[i];
-        var propertyValueArray = template[property];
-        var dataType = propertyValueArray[0];
-        var propertyValueArgs = propertyValueArray.slice(1, propertyValueArray.length);
-        switch (dataType) {
-            case randomExt.DATA_TYPE.BOOLEAN:
-                newObject[property] = generateBoolean();
-                break;
-            case randomExt.DATA_TYPE.BOOLEAN_ARRAY:
-                newObject[property] = generateBooleanArray.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.INTEGER:
-                newObject[property] = generateNumber.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.INTEGER_ARRAY:
-                newObject[property] = generateNumberArray.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.FLOAT:
-                newObject[property] = generateFloat.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.FLOAT_ARRAY:
-                newObject[property] = generateFloatArray.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.RESTRICTED_STRING:
-                newObject[property] = generateRestrictedString.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.RESTRICTED_STRING_ARRAY:
-                newObject[property] = generateRestrictedStringArray.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.STRING:
-                newObject[property] = generateString.apply(this, propertyValueArgs);
-                break;
-            case randomExt.DATA_TYPE.STRING_ARRAY:
-                newObject[property] = generateStringArray.apply(this, propertyValueArgs);
-                break;
-            default :
-                throw "Data Type " + dataType + " not supported.";
-        }
+        var randomDescriptor = template[property];
+        newObject[property] = _generateFromDescriptor(randomDescriptor);
     }
     return newObject;
 }
 
 function generateObjectArray(length, template) {
     return _generateArray(length, generateObject, [template]);
+}
+
+function generateStringPattern(pattern, variableDefinition) {
+    var stringPattern = pattern;
+    var properties = Object.getOwnPropertyNames(variableDefinition);
+    var replacedStringArray = new Array();
+    for (var i = 0; i < stringPattern.length; ++i) {
+        if (variableDefinition.hasOwnProperty(stringPattern[i])) {
+            replacedStringArray[i] = _generateFromDescriptor(variableDefinition[stringPattern[i]]);
+        } else {
+            replacedStringArray[i] = stringPattern[i];
+        }
+    }
+    return replacedStringArray.join("");
 }
 
 var randomExt = {
@@ -252,6 +272,7 @@ var randomExt = {
     restrictedStringArray: generateRestrictedStringArray,
     object: generateObject,
     objectArray: generateObjectArray,
+    stringPattern: generateStringPattern,
     CHAR_TYPE: {
         LOWERCASE: 0,
         UPPERCASE: 1,
@@ -276,3 +297,7 @@ var randomExt = {
 };
 
 module.exports = randomExt;
+
+console.log(generateStringPattern("0xx-xxxxxxxxx", {
+    x: [randomExt.DATA_TYPE.INTEGER, 10]
+}))
