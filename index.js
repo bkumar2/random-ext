@@ -1,3 +1,10 @@
+/*!
+ * random-ext
+ * https://github.com/bkumar2/random-ext.git
+ *
+ * Copyright 2014 Bipul Kumar
+ * Released under the Apache License 2.0
+ */
 function _generateArray(length, elementFunction, args) {
     var array = [];
     if (length != null) {

@@ -1,3 +1,10 @@
+/*!
+ * random-ext
+ * https://github.com/bkumar2/random-ext.git
+ *
+ * Copyright 2014 Bipul Kumar
+ * Released under the Apache License 2.0
+ */
 var randomExt = require("../index.js");
 
 describe('', function () {
