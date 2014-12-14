@@ -49,4 +49,13 @@ describe('', function () {
         console.log("randomObjectArray:", randomObjectArray);
         expect(randomObjectArray.length).toBe(5);
     });
+
+    it('must generate random string pattern array: ', function () {
+        var randomStringPatternArray = randomExt.stringPatternArray(5, "Xy Xy", {
+            X: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.UPPERCASE], 1, 1],
+            y: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.LOWERCASE], 20]
+        });
+        console.log("randomStringPatternArray:", randomStringPatternArray);
+        expect(randomStringPatternArray.length).toBe(5);
+    });
 });

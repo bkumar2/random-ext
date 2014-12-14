@@ -223,6 +223,12 @@ function _generateFromDescriptor(randomDescriptor) {
         case randomExt.DATA_TYPE.STRING_ARRAY:
             randomValue = generateStringArray.apply(this, propertyValueArgs);
             break;
+        case randomExt.DATA_TYPE.STRING_PATTERN:
+            randomValue = generateStringPattern.apply(this, propertyValueArgs);
+            break;
+        case randomExt.DATA_TYPE.STRING_PATTERN_ARRAY:
+            randomValue = generateStringPatternArray.apply(this, propertyValueArgs);
+            break;
         default :
             throw "Data Type " + dataType + " not supported.";
     }
@@ -261,6 +267,10 @@ function generateStringPattern(pattern, variableDefinition) {
     return replacedStringArray.join("");
 }
 
+function generateStringPatternArray(length, pattern, variableDefinition) {
+    return _generateArray(length, generateStringPattern, [pattern, variableDefinition]);
+}
+
 var randomExt = {
     boolean: generateBoolean,
     booleanArray: generateBooleanArray,
@@ -273,6 +283,7 @@ var randomExt = {
     object: generateObject,
     objectArray: generateObjectArray,
     stringPattern: generateStringPattern,
+    stringPatternArray: generateStringPatternArray,
     CHAR_TYPE: {
         LOWERCASE: 0,
         UPPERCASE: 1,
@@ -291,13 +302,11 @@ var randomExt = {
         STRING: 6,
         STRING_ARRAY: 7,
         RESTRICTED_STRING: 8,
-        RESTRICTED_STRING_ARRAY: 9
+        RESTRICTED_STRING_ARRAY: 9,
+        STRING_PATTERN: 10,
+        STRING_PATTERN_ARRAY: 11
     },
     DEBUG: false
 };
 
 module.exports = randomExt;
-
-console.log(generateStringPattern("0xx-xxxxxxxxx", {
-    x: [randomExt.DATA_TYPE.INTEGER, 10]
-}))
