@@ -132,7 +132,7 @@ Generates random restrictedString.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
-```
+```javascript
 // Generates string containing lower case and special characters.
 var randomRestrictedString = randomExt.restrictedString([randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
