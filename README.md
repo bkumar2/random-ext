@@ -147,7 +147,7 @@ Generates random restricted string array.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
-```
+```javascript
 // Generates 10 element array of strings containing lower case and special characters.
 var randomRestrictedStringArray = randomExt.restrictedStringArray(10, [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
@@ -159,7 +159,7 @@ Generates random object.
 ##### Parameter
 * template - Required. Template object to randomize.
 
-```
+```javascript
 var randomObject = randomExt.object({
     name: [randomExt.DATA_TYPE.STRING, 10, 5],
     age: [randomExt.DATA_TYPE.INTEGER, 100]
@@ -174,7 +174,7 @@ Generates random objectArray.
 * length - Required. Number of elements in the array.
 * template - Required. Template object to randomize.
 
-```
+```javascript
 var randomObjectArray = randomExt.objectArray(10,{
     name: [randomExt.DATA_TYPE.STRING, 10, 5],
     age: [randomExt.DATA_TYPE.INTEGER, 100]
@@ -189,7 +189,7 @@ Generates random string that matches given pattern. This is the most powerful ra
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
 * variableDefinition - Required. Object to describe each variable.
 
-```
+```javascript
 // Generates random GUID
 var randomGUIDApproach1 = randomExt.stringPattern("x-y-y-y-z",{
     x: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 8, 8],
@@ -210,7 +210,7 @@ Generates array of random string for given pattern.
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
 * variableDefinition - Required. Object to describe each variable.
 
-```
+```javascript
 // Generates random GUID
 var randomGUIDArray = randomExt.stringPatternArray(10, "x-y-y-y-z",{
     x: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 8, 8],
