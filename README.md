@@ -162,7 +162,7 @@ Generates random object.
 ```
 var randomObject = randomExt.object({
     name: [randomExt.DATA_TYPE.STRING, 10, 5],
-    age: [randomExt.DATA_TYPE.INTEGER, 100],
+    age: [randomExt.DATA_TYPE.INTEGER, 100]
 });
 ```
 
@@ -177,7 +177,7 @@ Generates random objectArray.
 ```
 var randomObjectArray = randomExt.objectArray(10,{
     name: [randomExt.DATA_TYPE.STRING, 10, 5],
-    age: [randomExt.DATA_TYPE.INTEGER, 100],
+    age: [randomExt.DATA_TYPE.INTEGER, 100]
 });
 ```
 

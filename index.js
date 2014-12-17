@@ -184,7 +184,7 @@ function generateRestrictedString(content, maxLength, minLength) {
     return _generateStringFromRanges(maxLength, minLength, ranges);
 }
 
-function generateRestrictedStringArray(content, arrayLength, stringMaxLength, stringMinLength) {
+function generateRestrictedStringArray(arrayLength, content, stringMaxLength, stringMinLength) {
     return _generateArray(arrayLength, generateRestrictedString, [content, stringMaxLength, stringMinLength]);
 }
 
@@ -276,6 +276,8 @@ var randomExt = {
     booleanArray: generateBooleanArray,
     integer: generateNumber,
     integerArray: generateNumberArray,
+    float: generateFloat,
+    floatArray: generateFloatArray,
     string: generateString,
     stringArray: generateStringArray,
     restrictedString: generateRestrictedString,
