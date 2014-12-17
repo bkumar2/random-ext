@@ -84,7 +84,7 @@ describe('', function () {
     });
 
     it('must generate random object array: ', function () {
-        var randomObjectArray = randomExt.objectArray(4,{
+        var randomObjectArray = randomExt.objectArray(4, {
             name: [randomExt.DATA_TYPE.STRING, 10, 5],
             age: [randomExt.DATA_TYPE.INTEGER, 100]
         });
@@ -108,5 +108,12 @@ describe('', function () {
         });
         console.log("randomStringPatternArray:", randomStringPatternArray);
         expect(randomStringPatternArray.length).toBe(5);
+    });
+
+    it('must pick a random item from an array: ', function () {
+        var inputArray = ["aaa", "bbb", "ccc"];
+        var randomPick = randomExt.pick(inputArray);
+        console.log("input array:", inputArray, " randomPick:", randomPick);
+        expect(typeof randomPick).toBe("string");
     });
 });

@@ -30,6 +30,7 @@ var randomExt = require('random-ext');
 * [`objectArray(length, template)`](#objectArray)
 * [`stringPattern(pattern, variableDefinition)`](#stringPattern)
 * [`stringPatternArray(length, pattern,variableDefinition)`](#stringPatternArray)
+* [`pick(array)`](#pick)
 
 <a name="boolean"/>
 ### boolean()
@@ -44,6 +45,7 @@ var randomBoolean = randomExt.boolean();
 Generates random boolean array.
 ##### Parameter
 * length - Required. Number of elements in the array.
+
 ```
 var randomBooleanArray = randomExt.booleanArray(10);
 ```
@@ -219,3 +221,15 @@ var randomGUIDArray = randomExt.stringPatternArray(10, "x-y-y-y-z",{
 });
 ```
 
+<a name="pick"/>
+### pick(array)
+
+Picks a random element from the given array.
+
+##### Parameters
+* array - Required. Input array from which random element is picked.
+
+```javascript
+var inputArray = ["aaa", "bbb", "ccc"];
+var randomPick = randomExt.pick(inputArray);
+```

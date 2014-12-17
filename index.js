@@ -271,6 +271,13 @@ function generateStringPatternArray(length, pattern, variableDefinition) {
     return _generateArray(length, generateStringPattern, [pattern, variableDefinition]);
 }
 
+function pick(array) {
+    if(array==null) {
+        throw "input array is null or undefined.";
+    }
+    return array[generateNumber(array.length - 1)];
+}
+
 var randomExt = {
     boolean: generateBoolean,
     booleanArray: generateBooleanArray,
@@ -286,6 +293,7 @@ var randomExt = {
     objectArray: generateObjectArray,
     stringPattern: generateStringPattern,
     stringPatternArray: generateStringPatternArray,
+    pick: pick,
     CHAR_TYPE: {
         LOWERCASE: 0,
         UPPERCASE: 1,
@@ -312,3 +320,5 @@ var randomExt = {
 };
 
 module.exports = randomExt;
+
+console.log(pick(["a","b","c"]));
