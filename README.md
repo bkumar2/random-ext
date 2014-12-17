@@ -10,7 +10,7 @@ npm install random-ext --save
 
 ## Usage
 
-```
+```javascript
 var randomExt = require('random-ext');
 ```
 
@@ -35,7 +35,8 @@ var randomExt = require('random-ext');
 <a name="boolean"/>
 ### boolean()
 Generates random boolean.
-```
+
+```javascript
 var randomBoolean = randomExt.boolean();
 ```
 
@@ -46,7 +47,7 @@ Generates random boolean array.
 ##### Parameter
 * length - Required. Number of elements in the array.
 
-```
+```javascript
 var randomBooleanArray = randomExt.booleanArray(10);
 ```
 
@@ -58,7 +59,7 @@ Generates random integer.
 * max - Required. Maximum integer value.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
 
-```
+```javascript
 var randomInteger = randomExt.integer(99, 10);
 ```
 
@@ -71,7 +72,7 @@ Generates random integerArray.
 * max - Required. Maximum integer value.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
 
-```
+```javascript
 var randomIntegerArray = randomExt.integerArray(length, max, min);
 ```
 
@@ -83,7 +84,7 @@ Generates random floating point number.
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
 
-```
+```javascript
 var randomFloat = randomExt.float(10.523, 3.021);
 ```
 
@@ -96,7 +97,7 @@ Generates random floating point numbers' array.
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
 
-```
+```javascript
 var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
 ```
 
@@ -108,7 +109,7 @@ Generates random string containing random Unicode character in the code range 32
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
-```
+```javascript
 var randomString = randomExt.string(10, 5);
 ```
 
@@ -121,7 +122,7 @@ Generates random string array.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
-```
+```javascript
 var randomStringArray = randomExt.stringArray(10, 4, 2);
 ```
 
@@ -136,7 +137,8 @@ Generates random restrictedString.
 
 ```javascript
 // Generates string containing lower case and special characters.
-var randomRestrictedString = randomExt.restrictedString([randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
+var randomRestrictedString = randomExt.restrictedString(
+    [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
 
 <a name="restrictedStringArray"/>
@@ -151,7 +153,8 @@ Generates random restricted string array.
 
 ```javascript
 // Generates 10 element array of strings containing lower case and special characters.
-var randomRestrictedStringArray = randomExt.restrictedStringArray(10, [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
+var randomRestrictedStringArray = randomExt.restrictedStringArray(10,
+    [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
 
 <a name="object"/>
