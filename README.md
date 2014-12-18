@@ -17,6 +17,7 @@ var randomExt = require('random-ext');
 ## API Documentation
 
 * [`CHAR_TYPE`](#CHAR_TYPE)
+
 * [`boolean()`](#boolean)
 * [`booleanArray(length)`](#booleanArray)
 * [`integer(max, min)`](#integer)
