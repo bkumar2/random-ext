@@ -194,9 +194,9 @@ var randomObjectArray = randomExt.objectArray(10,{
 <a name="stringPattern"/>
 ### stringPattern(pattern, variableDefinition)
 
-Generates random string that matches given pattern. This is the most powerful random string generator that can virtually mimic any type.
+Generates random string that matches given pattern. This is the most powerful random string generator that can virtually mimic any data type or format.
 ##### Parameters
-* pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
+* pattern - Required. Pattern containing variables and constants. Any pattern element that is not defined in variable definition is treated as constant.
 * variableDefinition - Required. Object to describe each variable. Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
 ```javascript
