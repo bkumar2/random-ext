@@ -29,9 +29,8 @@ var randomExt = require('random-ext');
 * [`object(template)`](#object)
 * [`objectArray(length, template)`](#objectArray)
 * [`stringPattern(pattern, variableDefinition)`](#stringPattern)
-* [`stringPatternArray(length, pattern,variableDefinition)`](#stringPatternArray)
+* [`stringPatternArray(length, pattern, variableDefinition)`](#stringPatternArray)
 * [`pick(array)`](#pick)
-
 * [`CHAR_TYPE`](#CHAR_TYPE)
 
 <a name="boolean"/>
@@ -164,7 +163,7 @@ var randomRestrictedStringArray = randomExt.restrictedStringArray(10,
 
 Generates random object.
 ##### Parameter
-* template - Required. Template object to randomize.
+* template - Required. Template object to randomize. Refer [object template syntax](#template)
 
 ##### Example
 
@@ -197,8 +196,7 @@ var randomObjectArray = randomExt.objectArray(10,{
 Generates random string that matches given pattern. This is the most powerful random string generator that can virtually mimic any type.
 ##### Parameters
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
-* variableDefinition - Required. Object to describe each variable. 
-...Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
+* variableDefinition - Required. Object to describe each variable. Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
 ```javascript
 // Generates random GUID
@@ -219,8 +217,7 @@ Generates array of random string for given pattern.
 ##### Parameters
 * length - Required. Number of elements in the array.
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
-* variableDefinition - Required. Object to describe each variable. 
-...Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
+* variableDefinition - Required. Object to describe each variable. Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
 ```javascript
 // Generates random GUID
@@ -265,6 +262,8 @@ var hexCharType = randomExt.CHAR_TYPE.HEX;
 
 <a name="template"/>
 ### Object template
+
+Object template is required to generate random objects or random string based on patterns.
 
 ##### Syntax
 
