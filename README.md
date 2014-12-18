@@ -16,8 +16,6 @@ var randomExt = require('random-ext');
 
 ## API Documentation
 
-* [`CHAR_TYPE`](#CHAR_TYPE)
-
 * [`boolean()`](#boolean)
 * [`booleanArray(length)`](#booleanArray)
 * [`integer(max, min)`](#integer)
@@ -33,6 +31,7 @@ var randomExt = require('random-ext');
 * [`stringPattern(pattern, variableDefinition)`](#stringPattern)
 * [`stringPatternArray(length, pattern, variableDefinition)`](#stringPatternArray)
 * [`pick(array)`](#pick)
+* [`CHAR_TYPE`](#CHAR_TYPE)
 
 <a name="boolean"/>
 ### boolean()
