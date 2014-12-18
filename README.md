@@ -74,7 +74,7 @@ Generates random integerArray.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
 
 ```javascript
-var randomIntegerArray = randomExt.integerArray(length, max, min);
+var randomIntegerArray = randomExt.integerArray(12, 99, 10);
 ```
 
 <a name="float"/>
@@ -111,7 +111,8 @@ Generates random string containing random Unicode character in the code range 32
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
 ```javascript
-var randomString = randomExt.string(10, 5);
+// Generates random password
+var randomPassword = randomExt.string(20, 10);
 ```
 
 <a name="stringArray"/>
@@ -132,14 +133,14 @@ var randomStringArray = randomExt.stringArray(10, 4, 2);
 
 Generates random restrictedString.
 ##### Parameters
-* charTypeArray - Required. Array of character types. Refer [CHAR_TYPE](#CHAR_TYPE)
+* charTypeArray - Required. Array of character types (Refer [CHAR_TYPE](#CHAR_TYPE)) or string from which characters will be picked.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
 ```javascript
-// Generates string containing lower case and special characters.
-var randomRestrictedString = randomExt.restrictedString(
-    [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
+// Generates random snake case variable name.
+var randomSnakeCaseVariableName = randomExt.restrictedString(
+    [randomExt.CHAR_TYPE.LOWERCASE,"_"], 20, 10);
 ```
 
 <a name="restrictedStringArray"/>
@@ -199,12 +200,19 @@ Generates random string that matches given pattern. This is the most powerful ra
 * variableDefinition - Required. Object to describe each variable. Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
 ```javascript
-// Generates random GUID
+// Generates random email
+var randomEmail = randomExt.stringPattern("x@x.com", {
+    x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.LOWERCASE], 20, 1]
+});
+
+// Generates random GUID - approach 1
 var randomGUIDApproach1 = randomExt.stringPattern("x-y-y-y-z",{
     x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 8, 8],
     y: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 4, 4],
     z: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 12, 12]
 });
+
+// Generates random GUID - approach 2
 var randomGUIDApproach2 = randomExt.stringPattern("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",{
     x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 1, 1]
 });

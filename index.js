@@ -190,8 +190,8 @@ function generateRestrictedStringArray(arrayLength, content, stringMaxLength, st
 
 function _generateFromDescriptor(randomDescriptor) {
     var randomValue = null;
-    if (randomDescriptor == null || randomDescriptor.length <= 0) {
-        throw "property [" + property + "] has invalid descriptor.";
+    if (randomDescriptor == null || !randomDescriptor.shift || randomDescriptor.length <= 0 || typeof randomDescriptor[0] !== "function") {
+        randomValue = randomDescriptor;
     } else {
         var randomFunction = randomDescriptor[0];
         if (randomDescriptor.length > 1) {

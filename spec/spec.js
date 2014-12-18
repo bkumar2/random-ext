@@ -74,9 +74,20 @@ describe('', function () {
         }
     });
 
+    it('must generate random restricted String : ', function () {
+        var randomSnakeCaseVariableName = randomExt.restrictedString(
+            [randomExt.CHAR_TYPE.LOWERCASE,"_"], 20, 10);
+        console.log("Random restricted string:", randomSnakeCaseVariableName);
+        expect(typeof randomSnakeCaseVariableName).toBe("string");
+        expect(randomSnakeCaseVariableName.length).toBeLessThan(21);
+        expect(randomSnakeCaseVariableName.length).toBeGreaterThan(9);
+    });
+
     it('must generate random object: ', function () {
         var randomObject = randomExt.object({
-            name: [randomExt.string, 10, 5],
+            name: [randomExt.restrictedString, [randomExt.CHAR_TYPE.LOWERCASE], 10, 5],
+            gender: [randomExt.pick, ["Male", "Female"]],
+            type: "Customer",
             age: [randomExt.integer, 100]
         });
         console.log("randomObject:", randomObject);
