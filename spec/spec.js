@@ -76,8 +76,8 @@ describe('', function () {
 
     it('must generate random object: ', function () {
         var randomObject = randomExt.object({
-            name: [randomExt.DATA_TYPE.STRING, 10, 5],
-            age: [randomExt.DATA_TYPE.INTEGER, 100]
+            name: [randomExt.string, 10, 5],
+            age: [randomExt.integer, 100]
         });
         console.log("randomObject:", randomObject);
         expect(typeof randomObject.name).toBe("string");
@@ -85,8 +85,8 @@ describe('', function () {
 
     it('must generate random object array: ', function () {
         var randomObjectArray = randomExt.objectArray(4, {
-            name: [randomExt.DATA_TYPE.STRING, 10, 5],
-            age: [randomExt.DATA_TYPE.INTEGER, 100]
+            name: [randomExt.string, 10, 5],
+            age: [randomExt.integer, 100]
         });
         console.log("randomObjectArray:", randomObjectArray);
         expect(randomObjectArray.length).toBe(4);
@@ -94,7 +94,7 @@ describe('', function () {
 
     it('must generate random string pattern: ', function () {
         var randomStringPattern = randomExt.stringPattern("x@x.com", {
-            x: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.LOWERCASE], 10, 6]
+            x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.LOWERCASE], 10, 6]
         });
         console.log("randomStringPatternArray:", randomStringPattern);
         expect(randomStringPattern.indexOf("@")).toBeGreaterThan(5);
@@ -103,8 +103,8 @@ describe('', function () {
 
     it('must generate random string pattern array: ', function () {
         var randomStringPatternArray = randomExt.stringPatternArray(5, "Xy Xy", {
-            X: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.UPPERCASE], 1, 1],
-            y: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.LOWERCASE], 20]
+            X: [randomExt.restrictedString, [randomExt.CHAR_TYPE.UPPERCASE], 1, 1],
+            y: [randomExt.restrictedString, [randomExt.CHAR_TYPE.LOWERCASE], 20]
         });
         console.log("randomStringPatternArray:", randomStringPatternArray);
         expect(randomStringPatternArray.length).toBe(5);

@@ -190,47 +190,16 @@ function generateRestrictedStringArray(arrayLength, content, stringMaxLength, st
 
 function _generateFromDescriptor(randomDescriptor) {
     var randomValue = null;
-    var dataType = randomDescriptor[0];
-    var propertyValueArgs = randomDescriptor.slice(1, randomDescriptor.length);
-    switch (dataType) {
-        case randomExt.DATA_TYPE.BOOLEAN:
-            randomValue = generateBoolean();
-            break;
-        case randomExt.DATA_TYPE.BOOLEAN_ARRAY:
-            randomValue = generateBooleanArray.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.INTEGER:
-            randomValue = generateNumber.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.INTEGER_ARRAY:
-            randomValue = generateNumberArray.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.FLOAT:
-            randomValue = generateFloat.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.FLOAT_ARRAY:
-            randomValue = generateFloatArray.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.RESTRICTED_STRING:
-            randomValue = generateRestrictedString.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.RESTRICTED_STRING_ARRAY:
-            randomValue = generateRestrictedStringArray.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.STRING:
-            randomValue = generateString.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.STRING_ARRAY:
-            randomValue = generateStringArray.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.STRING_PATTERN:
-            randomValue = generateStringPattern.apply(this, propertyValueArgs);
-            break;
-        case randomExt.DATA_TYPE.STRING_PATTERN_ARRAY:
-            randomValue = generateStringPatternArray.apply(this, propertyValueArgs);
-            break;
-        default :
-            throw "Data Type " + dataType + " not supported.";
+    if (randomDescriptor == null || randomDescriptor.length <= 0) {
+        throw "property [" + property + "] has invalid descriptor.";
+    } else {
+        var randomFunction = randomDescriptor[0];
+        if (randomDescriptor.length > 1) {
+            var propertyValueArgs = randomDescriptor.slice(1, randomDescriptor.length);
+            randomValue = randomFunction.apply(this, propertyValueArgs);
+        } else {
+            randomValue = randomFunction();
+        }
     }
     return randomValue;
 }
@@ -272,7 +241,7 @@ function generateStringPatternArray(length, pattern, variableDefinition) {
 }
 
 function pick(array) {
-    if(array==null) {
+    if (array == null) {
         throw "input array is null or undefined.";
     }
     return array[generateNumber(array.length - 1)];
@@ -320,5 +289,3 @@ var randomExt = {
 };
 
 module.exports = randomExt;
-
-console.log(pick(["a","b","c"]));

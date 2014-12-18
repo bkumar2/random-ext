@@ -32,6 +32,8 @@ var randomExt = require('random-ext');
 * [`stringPatternArray(length, pattern,variableDefinition)`](#stringPatternArray)
 * [`pick(array)`](#pick)
 
+* [`CHAR_TYPE`](#CHAR_TYPE)
+
 <a name="boolean"/>
 ### boolean()
 Generates random boolean.
@@ -131,7 +133,7 @@ var randomStringArray = randomExt.stringArray(10, 4, 2);
 
 Generates random restrictedString.
 ##### Parameters
-* charTypeArray - Required. Array of character types.
+* charTypeArray - Required. Array of character types. Refer [CHAR_TYPE](#CHAR_TYPE)
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
@@ -147,7 +149,7 @@ var randomRestrictedString = randomExt.restrictedString(
 Generates random restricted string array.
 ##### Parameters
 * length - Required. Number of elements in the array.
-* charTypeArray - Required. Array of character types.
+* charTypeArray - Required. Array of character types. Refer [CHAR_TYPE](#CHAR_TYPE)
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
@@ -164,11 +166,14 @@ Generates random object.
 ##### Parameter
 * template - Required. Template object to randomize.
 
+##### Example
+
 ```javascript
-var randomObject = randomExt.object({
-    name: [randomExt.DATA_TYPE.STRING, 10, 5],
-    age: [randomExt.DATA_TYPE.INTEGER, 100]
-});
+var customerTemplate = {
+    name: [randomExt.string, 10, 5],
+    age: [randomExt.integer, 100]
+};
+var customerWithRandomPropertyValues = randomExt.object(customerTemplate);
 ```
 
 <a name="objectArray"/>
@@ -177,12 +182,12 @@ var randomObject = randomExt.object({
 Generates random objectArray.
 ##### Parameters
 * length - Required. Number of elements in the array.
-* template - Required. Template object to randomize.
+* template - Required. Template object to randomize. Refer [object template syntax](#template)
 
 ```javascript
 var randomObjectArray = randomExt.objectArray(10,{
-    name: [randomExt.DATA_TYPE.STRING, 10, 5],
-    age: [randomExt.DATA_TYPE.INTEGER, 100]
+    name: [randomExt.string, 10, 5],
+    age: [randomExt.integer, 100]
 });
 ```
 
@@ -192,17 +197,18 @@ var randomObjectArray = randomExt.objectArray(10,{
 Generates random string that matches given pattern. This is the most powerful random string generator that can virtually mimic any type.
 ##### Parameters
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
-* variableDefinition - Required. Object to describe each variable.
+* variableDefinition - Required. Object to describe each variable. 
+...Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
 ```javascript
 // Generates random GUID
 var randomGUIDApproach1 = randomExt.stringPattern("x-y-y-y-z",{
-    x: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 8, 8],
-    y: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 4, 4],
-    z: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 12, 12]
+    x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 8, 8],
+    y: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 4, 4],
+    z: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 12, 12]
 });
 var randomGUIDApproach2 = randomExt.stringPattern("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",{
-    x: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 1, 1]
+    x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 1, 1]
 });
 ```
 
@@ -213,15 +219,18 @@ Generates array of random string for given pattern.
 ##### Parameters
 * length - Required. Number of elements in the array.
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
-* variableDefinition - Required. Object to describe each variable.
+* variableDefinition - Required. Object to describe each variable. 
+...Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
 ```javascript
 // Generates random GUID
-var randomGUIDArray = randomExt.stringPatternArray(10, "x-y-y-y-z",{
-    x: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 8, 8],
-    y: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 4, 4],
-    z: [randomExt.DATA_TYPE.RESTRICTED_STRING, [randomExt.CHAR_TYPE.HEX], 12, 12]
-});
+var pattern = "x-y-y-y-z";
+var variableDefinition = {
+    x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 8, 8],
+    y: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 4, 4],
+    z: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 12, 12]
+};
+var randomGUIDArray = randomExt.stringPatternArray(10, pattern, variableDefinition);
 ```
 
 <a name="pick"/>
@@ -236,3 +245,44 @@ Picks a random element from the given array.
 var inputArray = ["aaa", "bbb", "ccc"];
 var randomPick = randomExt.pick(inputArray);
 ```
+
+<a name="CHAR_TYPE"/>
+### CHAR_TYPE
+
+Character type enum. Defines character types to be used in string generation.
+
+##### Values
+* LOWERCASE - Lowercase alphabets.
+* UPPERCASE - Uppercase alphabets.
+* NUMERIC - Digits from 0 to 9.
+* SPECIAL - Special characters.
+* SPACE - Single space character. It doesn't include tab and newline.
+* HEX - Hexadecimal number (0-9 and a to f).
+
+```javascript
+var hexCharType = randomExt.CHAR_TYPE.HEX;
+```
+
+<a name="template"/>
+### Object template
+
+##### Syntax
+
+```javascript
+var templateObject = {
+    property1: [<function reference>, <function args>],
+    property2: [<function reference>, <function args>],
+    property3: [<function reference>, <function args>],
+    .....
+}
+```
+
+##### Example
+
+```javascript
+var customerTemplate = {
+    name: [randomExt.string, 10, 5],
+    age: [randomExt.integer, 100]
+};
+```
+
