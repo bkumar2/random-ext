@@ -113,7 +113,7 @@ Generates random date.
 * startDate - Optional. Earliest date to generate. Defaults to "01-Jan-1970 00:00:00 UTC" if unspecified.
 
 ```javascript
-var randomFloat = randomExt.float(10.523, 3.021);
+var randomDate = randomExt.date(new Date());
 ```
 
 <a name="dateArray"/>
@@ -126,7 +126,7 @@ Generates random date array.
 * startDate - Optional. Earliest date to generate. Defaults to "01-Jan-1970 00:00:00 UTC" if unspecified.
 
 ```javascript
-var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
+var randomDateArray = randomExt.dateArray(3, new Date());
 ```
 
 <a name="string"/>
