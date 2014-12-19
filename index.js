@@ -41,9 +41,13 @@ function generateFloatArray(length, limit, min) {
     return _generateArray(length, generateFloat, [limit, min]);
 }
 
-function generateNumber(max, min) {
+function generateInteger(max, min) {
     if (max != null) {
         if (min != null) {
+            if (max < min) {
+                throw "max [" + max + "] is less than min [" + min
+                "]";
+            }
             return Math.floor(Math.random() * (max - min + 1)) + min;
         } else {
             return Math.floor(Math.random() * (max + 1));
@@ -53,8 +57,8 @@ function generateNumber(max, min) {
     }
 }
 
-function generateNumberArray(length, max, min) {
-    return _generateArray(length, generateNumber, [max, min]);
+function generateIntegerArray(length, max, min) {
+    return _generateArray(length, generateInteger, [max, min]);
 }
 
 function _normalizeRanges(ranges) {
@@ -88,7 +92,7 @@ function _normalizeRanges(ranges) {
     }
 }
 
-function _generateNumberFromRanges(ranges) {
+function _generateIntegerFromRanges(ranges) {
     _normalizeRanges(ranges);
     if (ranges != null) {
         var span = 0;
@@ -110,11 +114,11 @@ function _generateNumberFromRanges(ranges) {
     }
 }
 
-function _generateNumberArrayFromRanges(length, ranges) {
+function _generateIntegerArrayFromRanges(length, ranges) {
     var numberArray = [];
     if (length != null && ranges != null) {
         for (var i = 0; i < length; ++i) {
-            numberArray[i] = _generateNumberFromRanges(ranges);
+            numberArray[i] = _generateIntegerFromRanges(ranges);
         }
     } else {
         throw "length and ranges is required.";
@@ -124,19 +128,23 @@ function _generateNumberArrayFromRanges(length, ranges) {
 
 function _generateStringFromRanges(maxLength, minLength, ranges) {
     var generatedString = "";
-    var length = 0;
-    if (maxLength != null) {
-        if (minLength != null) {
-            length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
-        } else {
-            length = Math.floor(Math.random() * (maxLength + 1));
-        }
-    } else {
-        throw "maxLength is required.";
-    }
-    var unicodeNumbers = _generateNumberArrayFromRanges(length, ranges);
+    var length = generateInteger(maxLength, minLength);
+    var unicodeNumbers = _generateIntegerArrayFromRanges(length, ranges);
     generatedString = String.fromCharCode.apply(this, unicodeNumbers);
     return generatedString;
+}
+
+function generateDate(endDate, startDate) {
+    if(endDate==null) {
+        throw "end date is required.";
+    }
+    var endDateTime = endDate.getTime();
+    var startDateTime = startDate != null ? startDate.getTime() : 0;
+    return new Date(generateInteger(endDateTime, startDateTime));
+}
+
+function generateDateArray(length, endDate, startDate) {
+    return _generateArray(length, generateDate, [endDate, startDate]);
 }
 
 function generateString(maxLength, minLength) {
@@ -244,16 +252,18 @@ function pick(array) {
     if (array == null) {
         throw "input array is null or undefined.";
     }
-    return array[generateNumber(array.length - 1)];
+    return array[generateInteger(array.length - 1)];
 }
 
 var randomExt = {
     boolean: generateBoolean,
     booleanArray: generateBooleanArray,
-    integer: generateNumber,
-    integerArray: generateNumberArray,
+    integer: generateInteger,
+    integerArray: generateIntegerArray,
     float: generateFloat,
     floatArray: generateFloatArray,
+    date: generateDate,
+    dateArray: generateDateArray,
     string: generateString,
     stringArray: generateStringArray,
     restrictedString: generateRestrictedString,

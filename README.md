@@ -22,6 +22,8 @@ var randomExt = require('random-ext');
 * [`integerArray(length, max, min)`](#integerArray)
 * [`float(limit, min)`](#float)
 * [`floatArray(length, limit, min)`](#floatArray)
+* [`date(startDate, endDate)`](#date)
+* [`dateArray(length, startDate, endDate)`](#dateArray)
 * [`string(maxLength, minLength)`](#string)
 * [`stringArray(arrayLength, maxLength, minLength)`](#stringArray)
 * [`restrictedString(charTypeArray, maxLength, minLength)`](#restrictedString)
@@ -97,6 +99,31 @@ Generates random floating point numbers' array.
 * length - Required. Number of elements in the array.
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
+
+```javascript
+var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
+```
+
+<a name="date"/>
+### date(endDate, startDate)
+
+Generates random date.
+##### Parameters
+* endDate - Required. Latest date to generate.
+* startDate - Optional. Earliest date to generate. Defaults to "01-Jan-1970 00:00:00 UTC" if unspecified.
+
+```javascript
+var randomFloat = randomExt.float(10.523, 3.021);
+```
+
+<a name="dateArray"/>
+### dateArray(length, endDate, startDate)
+
+Generates random date array.
+##### Parameters
+* length - Required. Number of elements in the array.
+* endDate - Required. Latest date to generate.
+* startDate - Optional. Earliest date to generate. Defaults to "01-Jan-1970 00:00:00 UTC" if unspecified.
 
 ```javascript
 var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);

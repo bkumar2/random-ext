@@ -1,7 +1,7 @@
 {
   "name": "random-ext",
-  "version": "2.2.1",
-  "description": "Generates random objects, strings, numbers, arrays, booleans etc",
+  "version": "2.3.0",
+  "description": "Generates random strings, numbers, arrays, objects, booleans etc",
   "main": "index.js",
   "scripts": {
     "test": "jasmine"
@@ -12,8 +12,14 @@
   },
   "keywords": [
     "random",
-    "extension",
-    "extras",
+    "random string",
+    "random integer",
+    "random float",
+    "random array",
+    "random object",
+    "random extension",
+    "random extras",
+    "random utility",
     "random objects",
     "random numbers",
     "random strings",

@@ -56,6 +56,21 @@ describe('', function () {
         }
     });
 
+    it('must generate random date: ', function () {
+        var randomDate = randomExt.date(new Date());
+        console.log("Random date:", randomDate);
+        expect(randomDate).toBeLessThan(new Date());
+    });
+
+    it('must generate random date array : ', function () {
+        var randomDateArray = randomExt.dateArray(3, new Date());
+        console.log("Random date array:", randomDateArray);
+        expect(randomDateArray.length).toBe(3);
+        for (var i = 0; i < randomDateArray.length; i++) {
+            expect(randomDateArray[i]).toBeLessThan(new Date());
+        }
+    });
+
     it('must generate random String : ', function () {
         var randomString = randomExt.string(10, 5);
         console.log("Random string:", randomString);
