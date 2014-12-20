@@ -1,6 +1,6 @@
 {
   "name": "random-ext",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Generates random strings, numbers, dates, arrays, objects, booleans etc",
   "main": "index.js",
   "scripts": {
