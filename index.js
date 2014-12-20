@@ -135,7 +135,7 @@ function _generateStringFromRanges(maxLength, minLength, ranges) {
 }
 
 function generateDate(endDate, startDate) {
-    if(endDate==null) {
+    if (endDate == null) {
         throw "end date is required.";
     }
     var endDateTime = endDate.getTime();
@@ -255,6 +255,18 @@ function pick(array) {
     return array[generateInteger(array.length - 1)];
 }
 
+function shuffle(array) {
+    if (array == null) {
+        throw "input array is null or undefined.";
+    }
+    for (var i = 0; i < array.length; ++i) {
+        var randomIndex = generateInteger(array.length - 1);
+        var temp = array[randomIndex];
+        array[randomIndex] = array[i];
+        array[i] = temp;
+    }
+}
+
 var randomExt = {
     boolean: generateBoolean,
     booleanArray: generateBooleanArray,
@@ -273,6 +285,7 @@ var randomExt = {
     stringPattern: generateStringPattern,
     stringPatternArray: generateStringPatternArray,
     pick: pick,
+    shuffle: shuffle,
     CHAR_TYPE: {
         LOWERCASE: 0,
         UPPERCASE: 1,
@@ -280,20 +293,6 @@ var randomExt = {
         SPECIAL: 3,
         SPACE: 4,
         HEX: 5
-    },
-    DATA_TYPE: {
-        BOOLEAN: 0,
-        BOOLEAN_ARRAY: 1,
-        INTEGER: 2,
-        INTEGER_ARRAY: 3,
-        FLOAT: 4,
-        FLOAT_ARRAY: 5,
-        STRING: 6,
-        STRING_ARRAY: 7,
-        RESTRICTED_STRING: 8,
-        RESTRICTED_STRING_ARRAY: 9,
-        STRING_PATTERN: 10,
-        STRING_PATTERN_ARRAY: 11
     },
     DEBUG: false
 };

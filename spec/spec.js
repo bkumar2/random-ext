@@ -91,7 +91,7 @@ describe('', function () {
 
     it('must generate random restricted String : ', function () {
         var randomSnakeCaseVariableName = randomExt.restrictedString(
-            [randomExt.CHAR_TYPE.LOWERCASE,"_"], 20, 10);
+            [randomExt.CHAR_TYPE.LOWERCASE, "_"], 20, 10);
         console.log("Random restricted string:", randomSnakeCaseVariableName);
         expect(typeof randomSnakeCaseVariableName).toBe("string");
         expect(randomSnakeCaseVariableName.length).toBeLessThan(21);
@@ -141,5 +141,12 @@ describe('', function () {
         var randomPick = randomExt.pick(inputArray);
         console.log("input array:", inputArray, " randomPick:", randomPick);
         expect(typeof randomPick).toBe("string");
+    });
+
+    it('must shuffle an array: ', function () {
+        var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        console.log("input array:" + array);
+        randomExt.shuffle(array);
+        console.log("shuffled array:" + array);
     });
 });

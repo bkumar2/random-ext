@@ -33,6 +33,7 @@ var randomExt = require('random-ext');
 * [`stringPattern(pattern, variableDefinition)`](#stringPattern)
 * [`stringPatternArray(length, pattern, variableDefinition)`](#stringPatternArray)
 * [`pick(array)`](#pick)
+* [`pick(array)`](#pick)
 * [`CHAR_TYPE`](#CHAR_TYPE)
 
 <a name="boolean"/>
@@ -276,6 +277,20 @@ Picks a random element from the given array.
 ```javascript
 var inputArray = ["aaa", "bbb", "ccc"];
 var randomPick = randomExt.pick(inputArray);
+```
+
+<a name="shuffle"/>
+### shuffle(array)
+
+Shuffles an array.
+
+##### Parameters
+* array - Required. Array to shuffle.
+
+```javascript
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+randomExt.shuffle(array);
+console.log("Shuffled array:" + array);
 ```
 
 <a name="CHAR_TYPE"/>
