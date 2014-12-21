@@ -145,8 +145,16 @@ describe('', function () {
 
     it('must shuffle an array: ', function () {
         var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        console.log("input array:" + array);
+        console.log("input array:", array);
         randomExt.shuffle(array);
-        console.log("shuffled array:" + array);
+        console.log("shuffled array:", array);
+    });
+
+    it('must generate a random color: ', function () {
+    	var randomColor = randomExt.color();
+        console.log("color:", randomColor);
+        expect(typeof randomColor).toBe("string");
+        expect(randomColor.indexOf("#")).toBe(0);
+        expect(randomColor.length).toBe(7);
     });
 });

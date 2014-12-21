@@ -34,6 +34,7 @@ var randomExt = require('random-ext');
 * [`stringPatternArray(length, pattern, variableDefinition)`](#stringPatternArray)
 * [`pick(array)`](#pick)
 * [`shuffle(array)`](#shuffle)
+* [`color()`](#color)
 * [`CHAR_TYPE`](#CHAR_TYPE)
 
 <a id="boolean" name="boolean"/>
@@ -266,7 +267,7 @@ var variableDefinition = {
 var randomGUIDArray = randomExt.stringPatternArray(10, pattern, variableDefinition);
 ```
 
-<a id="pick" name="pick"/>
+<a id="pick" name="pick"></a>
 ### pick(array)
 
 Picks a random element from the given array.
@@ -291,6 +292,15 @@ Shuffles an array.
 var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 randomExt.shuffle(array);
 console.log("Shuffled array:", array);
+```
+
+<a id="color" name="color"/>
+### color()
+
+Generates random HEX color code.
+
+```javascript
+var randomColor = randomExt.color();
 ```
 
 <a id="CHAR_TYPE" name="CHAR_TYPE"/>
