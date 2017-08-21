@@ -38,7 +38,9 @@ var randomExt = require('random-ext');
 * [`CHAR_TYPE`](#CHAR_TYPE)
 
 <a id="boolean" name="boolean"/>
+
 ### boolean()
+
 Generates random boolean.
 
 ```javascript
