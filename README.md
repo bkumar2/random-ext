@@ -34,10 +34,12 @@ var randomExt = require('random-ext');
 * [`stringPatternArray(length, pattern, variableDefinition)`](#stringPatternArray)
 * [`pick(array)`](#pick)
 * [`shuffle(array)`](#shuffle)
+* [`subArray(array)`](#subArray)
 * [`color()`](#color)
 * [`CHAR_TYPE`](#CHAR_TYPE)
 
 <a id="boolean" name="boolean"/>
+
 ### boolean()
 Generates random boolean.
 
@@ -57,6 +59,7 @@ var randomBooleanArray = randomExt.booleanArray(10);
 ```
 
 <a id="integer" name="integer"/>
+
 ### integer(max, min)
 
 Generates random integer.
@@ -69,6 +72,7 @@ var randomInteger = randomExt.integer(99, 10);
 ```
 
 <a id="integerArray" name="integerArray"/>
+
 ### integerArray(length, max, min)
 
 Generates random integerArray.
@@ -82,6 +86,7 @@ var randomIntegerArray = randomExt.integerArray(12, 99, 10);
 ```
 
 <a id="float" name="float"/>
+
 ### float(limit, min)
 
 Generates random floating point number.
@@ -94,6 +99,7 @@ var randomFloat = randomExt.float(10.523, 3.021);
 ```
 
 <a id="floatArray" name="floatArray"/>
+
 ### floatArray(length, max, min)
 
 Generates random floating point numbers' array.
@@ -107,6 +113,7 @@ var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
 ```
 
 <a id="date" name="date"/>
+
 ### date(endDate, startDate)
 
 Generates random date.
@@ -119,6 +126,7 @@ var randomDate = randomExt.date(new Date());
 ```
 
 <a id="dateArray" name="dateArray"/>
+
 ### dateArray(length, endDate, startDate)
 
 Generates random date array.
@@ -206,6 +214,7 @@ var customerWithRandomPropertyValues = randomExt.object(customerTemplate);
 ```
 
 <a id="objectArray" name="objectArray"/>
+
 ### objectArray(length, template)
 
 Generates random objectArray.
@@ -280,7 +289,24 @@ var inputArray = ["aaa", "bbb", "ccc"];
 var randomPick = randomExt.pick(inputArray);
 ```
 
+<a id="subArray" name="subArray"/>
+
+### subArray(array,length)
+
+Creates a sub array of given length with random elements picked from original array.
+
+##### Parameters
+* array - Required. Input Array.
+* length - Required. Length of resulting sub array.
+
+```javascript
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var subArray = randomExt.subArray(array,4);
+console.log("New Array:", subArray);
+```
+
 <a id="shuffle" name="shuffle"/>
+
 ### shuffle(array)
 
 Shuffles an array.
@@ -344,4 +370,3 @@ var customerTemplate = {
     age: [randomExt.integer, 100]
 };
 ```
-
