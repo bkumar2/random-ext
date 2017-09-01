@@ -33,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/bkumar2/random-ext/issues"
   },
-  "homepage": "https://github.com/bkumar2/random-ext"
+  "homepage": "https://github.com/bkumar2/random-ext",
+  "dependencies": {
+    "jasmine-node": "^1.14.5"
+  }
 }
