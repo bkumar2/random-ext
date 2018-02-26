@@ -382,4 +382,3 @@ var customerTemplate = {
     age: [randomExt.integer, 100]
 };
 ```
-
