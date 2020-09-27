@@ -312,6 +312,7 @@ function shuffle(array) {
 }
 
 function subArray(array, length) {
+  // validation
   if (array == null) {
     throw "input array is null or undefined.";
   } else if (length == null) {
@@ -319,6 +320,7 @@ function subArray(array, length) {
   } else if (array.length < length) {
     throw "input length [" + length + "] must not exceed array length [" + array.length + "]";
   }
+  // logic
   var copiedArray = array.slice();
   shuffle(copiedArray);
   return copiedArray.slice(0, length);
