@@ -210,7 +210,7 @@ function restrictedString(content, maxLength, minLength) {
       case randomExt.CHAR_TYPE.HEX:
         ranges = ranges.concat([
           [48, 57],
-          [97, 104]
+          [97, 102]
         ]);
         break;
       default:
