@@ -330,6 +330,14 @@ function color() {
   return '#'.concat((Math.random() * 0xFFFFFF << 0).toString(16));
 }
 
+function guid() {
+  return randomExt.stringPattern("xxxxxxxx-xxxx-yxxx-zxxx-xxxxxxxxxxxx",{
+    x: [randomExt.restrictedString, [randomExt.CHAR_TYPE.HEX], 1, 1],
+    y: [randomExt.restrictedString, ["12345"], 1, 1],
+    z: [randomExt.restrictedString, ["89ab"], 1, 1]
+  })
+}
+
 var randomExt = {
   boolean: boolean,
   booleanArray: booleanArray,
@@ -351,6 +359,7 @@ var randomExt = {
   shuffle: shuffle,
   subArray: subArray,
   color: color,
+  guid: guid,
   CHAR_TYPE: {
     LOWERCASE: 0,
     UPPERCASE: 1,

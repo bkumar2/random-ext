@@ -16,27 +16,55 @@ var randomExt = require('random-ext');
 
 ## API Documentation
 
-* [`boolean()`](#boolean)
-* [`booleanArray(length)`](#booleanArray)
-* [`integer(max, min)`](#integer)
-* [`integerArray(length, max, min)`](#integerArray)
-* [`float(limit, min)`](#float)
-* [`floatArray(length, limit, min)`](#floatArray)
-* [`date(endDate, startDate)`](#date)
-* [`dateArray(length, endDate, startDate)`](#dateArray)
-* [`string(maxLength, minLength)`](#string)
-* [`stringArray(arrayLength, maxLength, minLength)`](#stringArray)
-* [`restrictedString(charTypeArray, maxLength, minLength)`](#restrictedString)
-* [`restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)`](#restrictedStringArray)
-* [`object(template)`](#object)
-* [`objectArray(length, template)`](#objectArray)
-* [`stringPattern(pattern, variableDefinition)`](#stringPattern)
-* [`stringPatternArray(length, pattern, variableDefinition)`](#stringPatternArray)
-* [`pick(array)`](#pick)
-* [`shuffle(array)`](#shuffle)
-* [`subArray(array)`](#subArray)
-* [`color()`](#color)
-* [`CHAR_TYPE`](#CHAR_TYPE)
+- [random-ext (JavaScript Random Extension)](#random-ext-javascript-random-extension)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API Documentation](#api-documentation)
+    - [boolean()](#boolean)
+    - [booleanArray(length)](#booleanarraylength)
+        - [Parameter](#parameter)
+    - [integer(max, min)](#integermax-min)
+        - [Parameters](#parameters)
+    - [integerArray(length, max, min)](#integerarraylength-max-min)
+        - [Parameters](#parameters-1)
+    - [float(limit, min)](#floatlimit-min)
+        - [Parameters](#parameters-2)
+    - [floatArray(length, max, min)](#floatarraylength-max-min)
+        - [Parameters](#parameters-3)
+    - [date(endDate, startDate)](#dateenddate-startdate)
+        - [Parameters](#parameters-4)
+    - [dateArray(length, endDate, startDate)](#datearraylength-enddate-startdate)
+        - [Parameters](#parameters-5)
+    - [string(maxLength, minLength)](#stringmaxlength-minlength)
+        - [Parameters](#parameters-6)
+    - [stringArray(arrayLength, maxLength, minLength)](#stringarrayarraylength-maxlength-minlength)
+        - [Parameters](#parameters-7)
+    - [restrictedString(charTypeArray, maxLength, minLength)](#restrictedstringchartypearray-maxlength-minlength)
+        - [Parameters](#parameters-8)
+    - [restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)](#restrictedstringarrayarraylength-chartypearray-maxlength-minlength)
+        - [Parameters](#parameters-9)
+    - [object(template)](#objecttemplate)
+        - [Parameter](#parameter-1)
+        - [Example](#example)
+    - [objectArray(length, template)](#objectarraylength-template)
+        - [Parameters](#parameters-10)
+    - [stringPattern(pattern, variableDefinition)](#stringpatternpattern-variabledefinition)
+        - [Parameters](#parameters-11)
+    - [stringPatternArray(length, pattern, variableDefinition)](#stringpatternarraylength-pattern-variabledefinition)
+        - [Parameters](#parameters-12)
+    - [pick(array)](#pickarray)
+        - [Parameters](#parameters-13)
+    - [subArray(array,length)](#subarrayarraylength)
+        - [Parameters](#parameters-14)
+    - [shuffle(array)](#shufflearray)
+        - [Parameters](#parameters-15)
+    - [color()](#color)
+    - [guid()](#guid)
+    - [CHAR_TYPE](#char_type)
+        - [Values](#values)
+    - [Object template](#object-template)
+        - [Syntax](#syntax)
+        - [Example](#example-1)
 
 <a id="boolean" name="boolean"/>
 
@@ -354,6 +382,16 @@ Generates random HEX color code.
 
 ```javascript
 var randomColor = randomExt.color();
+```
+
+<a id="guid" name="guid"/>
+
+### guid()
+
+Generates RFC-4122 complaint GUID.
+
+```javascript
+var guid = randomExt.guid();
 ```
 
 <a id="CHAR_TYPE" name="CHAR_TYPE"/>

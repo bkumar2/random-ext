@@ -106,3 +106,7 @@ var randomColor = randomExt.color();
 expect(typeof randomColor).to.be.a("string");
 expect(randomColor.indexOf("#")).to.equal(0);
 expect(randomColor.length).to.equal(7);
+
+var randomGuid = randomExt.guid();
+expect(typeof randomGuid).to.be.a("string");
+expect(randomGuid.length).to.equal(36);
