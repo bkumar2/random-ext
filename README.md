@@ -1,4 +1,4 @@
-# random-ext (JavaScript Random Extension)
+# random-ext (JavaScript Random Values Generator)
 
 random-ext is a Node.js module that generates random boolean, integers, floats, strings (with or without predefined character sets), objects, arrays etc.
 
@@ -16,7 +16,7 @@ var randomExt = require('random-ext');
 
 ## API Documentation
 
-- [random-ext (JavaScript Random Extension)](#random-ext-javascript-random-extension)
+- [random-ext (JavaScript Random Values Generator)](#random-ext-javascript-random-values-generator)
   - [Installation](#installation)
   - [Usage](#usage)
   - [API Documentation](#api-documentation)
