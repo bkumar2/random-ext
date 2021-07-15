@@ -22,51 +22,28 @@ var randomExt = require('random-ext');
   - [API Documentation](#api-documentation)
     - [boolean()](#boolean)
     - [booleanArray(length)](#booleanarraylength)
-        - [Parameter](#parameter)
     - [integer(max, min)](#integermax-min)
-        - [Parameters](#parameters)
     - [integerArray(length, max, min)](#integerarraylength-max-min)
-        - [Parameters](#parameters-1)
     - [float(limit, min)](#floatlimit-min)
-        - [Parameters](#parameters-2)
     - [floatArray(length, max, min)](#floatarraylength-max-min)
-        - [Parameters](#parameters-3)
     - [date(endDate, startDate)](#dateenddate-startdate)
-        - [Parameters](#parameters-4)
     - [dateArray(length, endDate, startDate)](#datearraylength-enddate-startdate)
-        - [Parameters](#parameters-5)
     - [string(maxLength, minLength)](#stringmaxlength-minlength)
-        - [Parameters](#parameters-6)
     - [stringArray(arrayLength, maxLength, minLength)](#stringarrayarraylength-maxlength-minlength)
-        - [Parameters](#parameters-7)
     - [restrictedString(charTypeArray, maxLength, minLength)](#restrictedstringchartypearray-maxlength-minlength)
-        - [Parameters](#parameters-8)
     - [restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)](#restrictedstringarrayarraylength-chartypearray-maxlength-minlength)
-        - [Parameters](#parameters-9)
     - [object(template)](#objecttemplate)
-        - [Parameter](#parameter-1)
-        - [Example](#example)
     - [objectArray(length, template)](#objectarraylength-template)
-        - [Parameters](#parameters-10)
     - [stringPattern(pattern, variableDefinition)](#stringpatternpattern-variabledefinition)
-        - [Parameters](#parameters-11)
     - [stringPatternArray(length, pattern, variableDefinition)](#stringpatternarraylength-pattern-variabledefinition)
-        - [Parameters](#parameters-12)
     - [pick(array)](#pickarray)
-        - [Parameters](#parameters-13)
     - [subArray(array,length)](#subarrayarraylength)
-        - [Parameters](#parameters-14)
     - [shuffle(array)](#shufflearray)
-        - [Parameters](#parameters-15)
     - [color()](#color)
     - [guid()](#guid)
     - [CHAR_TYPE](#char_type)
         - [Values](#values)
     - [Object template](#object-template)
-        - [Syntax](#syntax)
-        - [Example](#example-1)
-
-<a id="boolean" name="boolean"/>
 
 ### boolean()
 
@@ -76,26 +53,22 @@ Generates random boolean.
 var randomBoolean = randomExt.boolean();
 ```
 
-<a id="booleanArray" name="booleanArray"/>
-
 ### booleanArray(length)
 
 Generates random boolean array.
 
-##### Parameter
+**Parameter**
 * length - Required. Number of elements in the array.
 
 ```javascript
 var randomBooleanArray = randomExt.booleanArray(10);
 ```
 
-<a id="integer" name="integer"/>
-
 ### integer(max, min)
 
 Generates random integer.
 
-##### Parameters
+**Parameters**
 * max - Required. Maximum integer value.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
 
@@ -103,13 +76,11 @@ Generates random integer.
 var randomInteger = randomExt.integer(99, 10);
 ```
 
-<a id="integerArray" name="integerArray"/>
-
 ### integerArray(length, max, min)
 
 Generates random integerArray.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * max - Required. Maximum integer value.
 * min - Optional. Minimum integer value. Defaults to 0 if unspecified.
@@ -118,13 +89,11 @@ Generates random integerArray.
 var randomIntegerArray = randomExt.integerArray(12, 99, 10);
 ```
 
-<a id="float" name="float"/>
-
 ### float(limit, min)
 
 Generates random floating point number.
 
-##### Parameters
+**Parameters**
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
 
@@ -132,13 +101,11 @@ Generates random floating point number.
 var randomFloat = randomExt.float(10.523, 3.021);
 ```
 
-<a id="floatArray" name="floatArray"/>
-
 ### floatArray(length, max, min)
 
 Generates random floating point numbers' array.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * limit - Required. Floating point number's upper limit. Generated number is always below this value.
 * min - Optional. Minimum floating point number. Defaults to 0 if unspecified.
@@ -147,13 +114,11 @@ Generates random floating point numbers' array.
 var randomFloatArray = randomExt.floatArray(23, 100.23423, 0.4);
 ```
 
-<a id="date" name="date"/>
-
 ### date(endDate, startDate)
 
 Generates random date.
 
-##### Parameters
+**Parameters**
 * endDate - Required. Latest date to generate.
 * startDate - Optional. Earliest date to generate. Defaults to "01-Jan-1970 00:00:00 UTC" if unspecified.
 
@@ -161,13 +126,11 @@ Generates random date.
 var randomDate = randomExt.date(new Date());
 ```
 
-<a id="dateArray" name="dateArray"/>
-
 ### dateArray(length, endDate, startDate)
 
 Generates random date array.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * endDate - Required. Latest date to generate.
 * startDate - Optional. Earliest date to generate. Defaults to "01-Jan-1970 00:00:00 UTC" if unspecified.
@@ -176,13 +139,11 @@ Generates random date array.
 var randomDateArray = randomExt.dateArray(3, new Date());
 ```
 
-<a id="string" name="string"/>
-
 ### string(maxLength, minLength)
 
 Generates random string containing random Unicode character in the code range 32-127, i.e. alphabets, numbers, space and special characters.
 
-##### Parameters
+**Parameters**
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
 
@@ -191,13 +152,11 @@ Generates random string containing random Unicode character in the code range 32
 var randomPassword = randomExt.string(20, 10);
 ```
 
-<a id="stringArray" name="stringArray"/>
-
 ### stringArray(arrayLength, maxLength, minLength)
 
 Generates random string array.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
@@ -206,13 +165,11 @@ Generates random string array.
 var randomStringArray = randomExt.stringArray(10, 4, 2);
 ```
 
-<a id="restrictedString" name="restrictedString"/>
-
 ### restrictedString(charTypeArray, maxLength, minLength)
 
 Generates random restrictedString.
 
-##### Parameters
+**Parameters**
 * charTypeArray - Required. Array of character types (Refer [CHAR_TYPE](#CHAR_TYPE)) or string from which characters will be picked.
 * maxLength - Required. Maximum length of generated string.
 * minLength - Optional. Minimum length of generated string. Defaults to 0 if unspecified.
@@ -223,13 +180,11 @@ var randomSnakeCaseVariableName = randomExt.restrictedString(
     [randomExt.CHAR_TYPE.LOWERCASE,"_"], 20, 10);
 ```
 
-<a id="restrictedStringArray" name="restrictedStringArray"/>
-
 ### restrictedStringArray(arrayLength, charTypeArray, maxLength, minLength)
 
 Generates random restricted string array.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * charTypeArray - Required. Array of character types. Refer [CHAR_TYPE](#CHAR_TYPE)
 * maxLength - Required. Maximum length of generated string.
@@ -241,17 +196,12 @@ var randomRestrictedStringArray = randomExt.restrictedStringArray(10,
     [randomExt.CHAR_TYPE.LOWERCASE, randomExt.CHAR_TYPE.SPECIAL], 10, 5);
 ```
 
-<a id="object" name="object"/>
-
 ### object(template)
 
 Generates random object.
 
-##### Parameter
+**Parameters**
 * template - Required. Template object to randomize. Refer [object template syntax](#template)
-
-
-##### Example
 
 ```javascript
 var customerTemplate = {
@@ -261,13 +211,11 @@ var customerTemplate = {
 var customerWithRandomPropertyValues = randomExt.object(customerTemplate);
 ```
 
-<a id="objectArray" name="objectArray"/>
-
 ### objectArray(length, template)
 
 Generates random objectArray.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * template - Required. Template object to randomize. Refer [object template syntax](#template)
 
@@ -278,13 +226,11 @@ var randomObjectArray = randomExt.objectArray(10,{
 });
 ```
 
-<a id="stringPattern" name="stringPattern"/>
-
 ### stringPattern(pattern, variableDefinition)
 
 Generates random string that matches given pattern. This is the most powerful random string generator that can virtually mimic any data type or format.
 
-##### Parameters
+**Parameters**
 * pattern - Required. Pattern containing variables and constants. Any pattern element that is not defined in variable definition is treated as constant.
 * variableDefinition - Required. Object to describe each variable. Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
 
@@ -307,13 +253,11 @@ var randomGUIDApproach2 = randomExt.stringPattern("xxxxxxxx-xxxx-xxxx-xxxx-xxxxx
 });
 ```
 
-<a id="stringPatternArray" name="stringPatternArray"/>
-
 ### stringPatternArray(length, pattern, variableDefinition)
 
 Generates array of random string for given pattern.
 
-##### Parameters
+**Parameters**
 * length - Required. Number of elements in the array.
 * pattern - Required. Pattern containing variables and fixed string which will be matched with variable definition to generate a random string.
 * variableDefinition - Required. Object to describe each variable. Variable definition syntax is same as object template syntax. But each property of variable definition describes a variable used in pattern. Refer [object template syntax](#template)
@@ -329,13 +273,11 @@ var variableDefinition = {
 var randomGUIDArray = randomExt.stringPatternArray(10, pattern, variableDefinition);
 ```
 
-<a id="pick" name="pick"></a>
-
 ### pick(array)
 
 Picks a random element from the given array.
 
-##### Parameters
+**Parameters**
 * array - Required. Input array from which random element is picked.
 
 ```javascript
@@ -343,13 +285,11 @@ var inputArray = ["aaa", "bbb", "ccc"];
 var randomPick = randomExt.pick(inputArray);
 ```
 
-<a id="subArray" name="subArray"/>
-
 ### subArray(array,length)
 
 Creates a sub array of given length with random elements picked from original array.
 
-##### Parameters
+**Parameters**
 * array - Required. Input Array.
 * length - Required. Length of resulting sub array.
 
@@ -359,13 +299,11 @@ var subArray = randomExt.subArray(array,4);
 console.log("New Array:", subArray);
 ```
 
-<a id="shuffle" name="shuffle"/>
-
 ### shuffle(array)
 
 Shuffles an array.
 
-##### Parameters
+**Parameters**
 * array - Required. Array to shuffle.
 
 ```javascript
@@ -373,8 +311,6 @@ var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 randomExt.shuffle(array);
 console.log("Shuffled array:", array);
 ```
-
-<a id="color" name="color"/>
 
 ### color()
 
@@ -384,8 +320,6 @@ Generates random HEX color code.
 var randomColor = randomExt.color();
 ```
 
-<a id="guid" name="guid"/>
-
 ### guid()
 
 Generates RFC-4122 complaint GUID.
@@ -393,8 +327,6 @@ Generates RFC-4122 complaint GUID.
 ```javascript
 var guid = randomExt.guid();
 ```
-
-<a id="CHAR_TYPE" name="CHAR_TYPE"/>
 
 ### CHAR_TYPE
 
@@ -412,13 +344,11 @@ Character type enum. Defines character types to be used in string generation.
 var hexCharType = randomExt.CHAR_TYPE.HEX;
 ```
 
-<a id="template" name="template"/>
-
 ### Object template
 
 Object template is required to generate random objects or random string based on patterns.
 
-##### Syntax
+**Syntax**
 
 ```javascript
 var templateObject = {
@@ -429,7 +359,7 @@ var templateObject = {
 }
 ```
 
-##### Example
+**Example**
 
 ```javascript
 var customerTemplate = {
