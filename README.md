@@ -39,9 +39,8 @@ var randomExt = require("random-ext");
         -   [pick(array)](#pickarray)
         -   [shuffle(array)](#shufflearray)
         -   [subArray(array,length)](#subarrayarraylength)
-        -   [subArray(array,length)](#subarrayarraylength)
+        -   [splitArray(array,count,ensureEqualSize)](#splitarrayarray-count-ensureequalsize)
         -   [color()](#color)
-        -   [splitArray()](#splitArray)
         -   [CHAR_TYPE](#char_type)
             -   [Values](#values)
         -   [Object template](#object-template)
@@ -309,6 +308,20 @@ var inputArray = ["aaa", "bbb", "ccc"];
 var randomPick = randomExt.pick(inputArray);
 ```
 
+### shuffle(array)
+
+Shuffles an array.
+
+**Parameters**
+
+-   array - Required. Array to shuffle.
+
+```javascript
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+randomExt.shuffle(array);
+console.log("Shuffled array:", array);
+```
+
 ### subArray(array,length)
 
 Creates a sub array of given length with random elements picked from original array.
@@ -324,18 +337,20 @@ var subArray = randomExt.subArray(array, 4);
 console.log("New Array:", subArray);
 ```
 
-### shuffle(array)
+### splitArray(array, count, ensureEqualSize)
 
-Shuffles an array.
+Splits an array into subarrays equal to the given count. It can generate equal sized or random sized arrays based on the 3rd parameter. Subarrays have random elements sourced from original array. Each element in the source will be used once in the output.
 
-**Parameters**
+##### Parameters
 
--   array - Required. Array to shuffle.
+-   array - Required. Array to split.
+-   count - Required. Number of arrays to generate in the output.
+-   equalSize - (Default:false) Whether output arrays should be equal in size or not.
 
 ```javascript
 var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-randomExt.shuffle(array);
-console.log("Shuffled array:", array);
+var arrayOf3Arrays = randomExt.split(array, 3, true);
+console.log("Array of 3 equal sized arrays:", arrayOf3Arrays);
 ```
 
 ### color()
