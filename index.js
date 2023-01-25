@@ -308,6 +308,30 @@ function subArray(array, length) {
     return copiedArray.slice(0, length);
 }
 
+function splitArray(array, count, ensureEqualSize) {
+    if (array == null || count == null) {
+        throw "array and count is required.";
+    }
+    if (array.length < count) {
+        throw "input array length is not sufficient for the split.";
+    }
+    var arrayCopy = [...array];
+    shuffle(arrayCopy);
+    var outputArrays = [];
+    for (var i = count, start = 0, remaining = arrayCopy.length; i > 0; --i) {
+        var nextLength = ensureEqualSize
+            ? Math.ceil(remaining / i)
+            : i === 1
+            ? remaining
+            : integer(remaining - i, 1);
+        var slicedArray = arrayCopy.slice(start, start + nextLength);
+        remaining -= slicedArray.length;
+        start += slicedArray.length;
+        outputArrays.push(slicedArray);
+    }
+    return outputArrays;
+}
+
 function color() {
     return "#".concat(((Math.random() * 0xffffff) << 0).toString(16));
 }
@@ -340,6 +364,7 @@ var randomExt = {
     pick: pick,
     shuffle: shuffle,
     subArray: subArray,
+    splitArray: splitArray,
     color: color,
     guid: guid,
     CHAR_TYPE: {

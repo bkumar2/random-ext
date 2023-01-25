@@ -105,6 +105,21 @@ var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 var subArray = randomExt.subArray(array, 4);
 expect(subArray.length).to.equal(4);
 
+var arrayToSplit = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var splittedArrays1 = randomExt.splitArray(arrayToSplit, 3, true);
+expect(splittedArrays1.length).to.equal(3);
+expect(splittedArrays1[0].length).to.equal(4);
+expect(splittedArrays1[1].length).to.equal(3);
+expect(splittedArrays1[2].length).to.equal(3);
+var splittedArrays2 = randomExt.splitArray(arrayToSplit, 3, false);
+expect(splittedArrays2.length).to.equal(3);
+expect(splittedArrays2[0].length).to.be.above(0);
+expect(splittedArrays2[1].length).to.be.above(0);
+expect(splittedArrays2[2].length).to.be.above(0);
+expect(splittedArrays2[0].length + splittedArrays2[1].length + splittedArrays2[2].length).to.equal(
+    10
+);
+
 var randomColor = randomExt.color();
 expect(typeof randomColor).to.be.a("string");
 expect(randomColor.indexOf("#")).to.equal(0);
